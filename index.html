@@ -3,23 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tutorial CapCut - Panduan Lengkap Editor Video Profesional</title>
+    <title>Tutorial KifVid - Panduan Lengkap Editor Video Profesional</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #00c3ff;
-            --primary-dark: #00a1d6;
+            --primary: #00ff9d;
+            --primary-dark: #00cc7a;
+            --primary-light: rgba(0, 255, 157, 0.1);
             --secondary: #ff2e63;
-            --dark: #1a1a2e;
-            --dark-light: #2d2d44;
-            --light: #f8f9fa;
-            --gray: #6c757d;
-            --gray-light: #e9ecef;
+            --dark: #000000;
+            --dark-light: #111111;
+            --darker: #050505;
+            --light: #ffffff;
+            --gray: #aaaaaa;
+            --gray-light: #333333;
+            --gray-dark: #222222;
             --border-radius: 12px;
-            --box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            --box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            --box-shadow-light: 0 5px 15px rgba(0, 255, 157, 0.2);
             --transition: all 0.3s ease;
         }
 
@@ -32,8 +36,8 @@
         body {
             font-family: 'Inter', sans-serif;
             line-height: 1.6;
-            color: #333;
-            background-color: #fefefe;
+            color: var(--light);
+            background-color: var(--dark);
             overflow-x: hidden;
         }
 
@@ -41,7 +45,7 @@
             font-family: 'Poppins', sans-serif;
             font-weight: 600;
             line-height: 1.3;
-            color: var(--dark);
+            color: var(--light);
         }
 
         .container {
@@ -55,22 +59,23 @@
             display: inline-block;
             padding: 14px 32px;
             background: var(--primary);
-            color: white;
+            color: #000000;
             border: none;
             border-radius: var(--border-radius);
-            font-weight: 600;
+            font-weight: 700;
             font-size: 16px;
             cursor: pointer;
             transition: var(--transition);
             text-decoration: none;
             text-align: center;
-            box-shadow: 0 4px 15px rgba(0, 195, 255, 0.2);
+            box-shadow: var(--box-shadow-light);
+            letter-spacing: 0.5px;
         }
 
         .btn:hover {
             background: var(--primary-dark);
             transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(0, 195, 255, 0.3);
+            box-shadow: 0 10px 25px rgba(0, 255, 157, 0.4);
         }
 
         .btn-secondary {
@@ -81,17 +86,20 @@
         }
 
         .btn-secondary:hover {
-            background: rgba(0, 195, 255, 0.05);
+            background: var(--primary-light);
+            color: var(--primary);
         }
 
         /* Header Styles */
         header {
-            background-color: white;
-            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+            background-color: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.7);
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
+            border-bottom: 1px solid var(--gray-light);
         }
 
         .header-container {
@@ -107,13 +115,17 @@
             gap: 10px;
             font-size: 24px;
             font-weight: 700;
-            color: var(--dark);
+            color: var(--light);
             text-decoration: none;
         }
 
         .logo-icon {
             color: var(--primary);
             font-size: 28px;
+        }
+
+        .logo span {
+            color: var(--primary);
         }
 
         .nav-links {
@@ -124,7 +136,7 @@
 
         .nav-links a {
             text-decoration: none;
-            color: var(--dark);
+            color: var(--light);
             font-weight: 500;
             font-size: 16px;
             transition: var(--transition);
@@ -153,15 +165,26 @@
             display: none;
             font-size: 24px;
             cursor: pointer;
-            color: var(--dark);
+            color: var(--light);
         }
 
         /* Hero Section */
         .hero {
             padding: 160px 0 100px;
-            background: linear-gradient(135deg, #f5fdff 0%, #f0f9ff 100%);
+            background: linear-gradient(135deg, var(--darker) 0%, var(--dark) 100%);
             overflow: hidden;
             position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 70%;
+            height: 150%;
+            background: radial-gradient(circle, rgba(0, 255, 157, 0.05) 0%, transparent 70%);
+            z-index: 0;
         }
 
         .hero-container {
@@ -169,6 +192,8 @@
             align-items: center;
             justify-content: space-between;
             gap: 40px;
+            position: relative;
+            z-index: 1;
         }
 
         .hero-content {
@@ -214,11 +239,25 @@
             box-shadow: var(--box-shadow);
             transform: perspective(1000px) rotateY(-10deg) rotateX(5deg);
             transition: var(--transition);
-            border: 10px solid white;
+            border: 10px solid var(--dark-light);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .mockup::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: var(--primary);
+            z-index: 2;
         }
 
         .mockup:hover {
             transform: perspective(1000px) rotateY(0deg) rotateX(0deg);
+            border-color: var(--primary);
         }
 
         /* Features Section */
@@ -232,6 +271,10 @@
             margin-bottom: 16px;
         }
 
+        .section-title h2 span {
+            color: var(--primary);
+        }
+
         .section-title p {
             color: var(--gray);
             max-width: 600px;
@@ -240,7 +283,7 @@
 
         .features {
             padding: 100px 0;
-            background-color: white;
+            background-color: var(--darker);
         }
 
         .features-grid {
@@ -250,13 +293,28 @@
         }
 
         .feature-card {
-            background: white;
+            background: var(--dark-light);
             border-radius: var(--border-radius);
             padding: 32px;
             box-shadow: var(--box-shadow);
             transition: var(--transition);
             border: 1px solid var(--gray-light);
             text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--primary);
+            transform: scaleX(0);
+            transition: var(--transition);
+            transform-origin: left;
         }
 
         .feature-card:hover {
@@ -264,10 +322,14 @@
             border-color: var(--primary);
         }
 
+        .feature-card:hover::before {
+            transform: scaleX(1);
+        }
+
         .feature-icon {
             width: 70px;
             height: 70px;
-            background: rgba(0, 195, 255, 0.1);
+            background: var(--primary-light);
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -275,11 +337,19 @@
             margin: 0 auto 24px;
             color: var(--primary);
             font-size: 30px;
+            transition: var(--transition);
+        }
+
+        .feature-card:hover .feature-icon {
+            background: var(--primary);
+            color: var(--dark);
+            transform: scale(1.1);
         }
 
         .feature-card h3 {
             font-size: 22px;
             margin-bottom: 16px;
+            color: var(--light);
         }
 
         .feature-card p {
@@ -290,7 +360,7 @@
         /* Tutorials Section */
         .tutorials {
             padding: 100px 0;
-            background-color: #f9fbfd;
+            background-color: var(--dark);
         }
 
         .tutorials-filter {
@@ -303,18 +373,20 @@
 
         .filter-btn {
             padding: 10px 24px;
-            background: white;
+            background: var(--dark-light);
             border: 1px solid var(--gray-light);
             border-radius: 30px;
             font-weight: 500;
             cursor: pointer;
             transition: var(--transition);
+            color: var(--light);
         }
 
         .filter-btn.active, .filter-btn:hover {
             background: var(--primary);
-            color: white;
+            color: var(--dark);
             border-color: var(--primary);
+            box-shadow: var(--box-shadow-light);
         }
 
         .tutorials-grid {
@@ -324,26 +396,28 @@
         }
 
         .tutorial-card {
-            background: white;
+            background: var(--dark-light);
             border-radius: var(--border-radius);
             overflow: hidden;
             box-shadow: var(--box-shadow);
             transition: var(--transition);
+            border: 1px solid var(--gray-light);
         }
 
         .tutorial-card:hover {
             transform: translateY(-8px);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7);
+            border-color: var(--primary);
         }
 
         .tutorial-img {
             height: 200px;
             width: 100%;
-            background-color: var(--primary);
+            background: var(--primary);
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
+            color: var(--dark);
             font-size: 60px;
             position: relative;
             overflow: hidden;
@@ -364,7 +438,7 @@
         .tutorial-category {
             display: inline-block;
             padding: 6px 12px;
-            background: rgba(0, 195, 255, 0.1);
+            background: var(--primary-light);
             color: var(--primary);
             border-radius: 20px;
             font-size: 13px;
@@ -375,6 +449,7 @@
         .tutorial-card h3 {
             font-size: 20px;
             margin-bottom: 12px;
+            color: var(--light);
         }
 
         .tutorial-card p {
@@ -393,19 +468,40 @@
         /* Download Section */
         .download {
             padding: 100px 0;
-            background: linear-gradient(135deg, var(--dark) 0%, #2d2d44 100%);
-            color: white;
+            background: linear-gradient(135deg, var(--darker) 0%, var(--dark-light) 100%);
+            color: var(--light);
             text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .download::before {
+            content: '';
+            position: absolute;
+            bottom: -50%;
+            left: -20%;
+            width: 70%;
+            height: 150%;
+            background: radial-gradient(circle, rgba(0, 255, 157, 0.05) 0%, transparent 70%);
+            z-index: 0;
+        }
+
+        .download .container {
+            position: relative;
+            z-index: 1;
         }
 
         .download h2 {
-            color: white;
             font-size: 36px;
             margin-bottom: 16px;
         }
 
+        .download h2 span {
+            color: var(--primary);
+        }
+
         .download p {
-            color: rgba(255, 255, 255, 0.8);
+            color: var(--gray);
             max-width: 600px;
             margin: 0 auto 40px;
         }
@@ -422,29 +518,34 @@
             align-items: center;
             gap: 12px;
             padding: 16px 28px;
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(0, 255, 157, 0.1);
             border-radius: var(--border-radius);
-            color: white;
+            color: var(--light);
             text-decoration: none;
             font-weight: 500;
             transition: var(--transition);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(0, 255, 157, 0.2);
+            backdrop-filter: blur(10px);
         }
 
         .download-btn:hover {
-            background: rgba(255, 255, 255, 0.2);
+            background: rgba(0, 255, 157, 0.2);
             transform: translateY(-5px);
+            border-color: var(--primary);
+            box-shadow: var(--box-shadow-light);
         }
 
         .download-btn i {
             font-size: 24px;
+            color: var(--primary);
         }
 
         /* Footer */
         footer {
-            background: var(--dark);
-            color: white;
+            background: var(--darker);
+            color: var(--light);
             padding: 70px 0 30px;
+            border-top: 1px solid var(--gray-light);
         }
 
         .footer-content {
@@ -455,11 +556,11 @@
         }
 
         .footer-col h3 {
-            color: white;
             font-size: 20px;
             margin-bottom: 24px;
             position: relative;
             padding-bottom: 10px;
+            color: var(--light);
         }
 
         .footer-col h3::after {
@@ -481,7 +582,7 @@
         }
 
         .footer-links a {
-            color: rgba(255, 255, 255, 0.7);
+            color: var(--gray);
             text-decoration: none;
             transition: var(--transition);
         }
@@ -503,23 +604,42 @@
             justify-content: center;
             width: 40px;
             height: 40px;
-            background: rgba(255, 255, 255, 0.1);
+            background: var(--dark-light);
             border-radius: 50%;
-            color: white;
+            color: var(--light);
             transition: var(--transition);
         }
 
         .social-links a:hover {
             background: var(--primary);
+            color: var(--dark);
             transform: translateY(-3px);
         }
 
         .copyright {
             text-align: center;
             padding-top: 30px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: rgba(255, 255, 255, 0.6);
+            border-top: 1px solid var(--gray-light);
+            color: var(--gray);
             font-size: 14px;
+        }
+
+        /* Scrollbar styling */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--dark);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--gray-light);
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--primary);
         }
 
         /* Responsive Styles */
@@ -549,12 +669,14 @@
                 top: 100%;
                 left: 0;
                 width: 100%;
-                background: white;
+                background: rgba(0, 0, 0, 0.98);
                 flex-direction: column;
                 padding: 20px;
-                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.7);
                 text-align: center;
                 gap: 0;
+                backdrop-filter: blur(10px);
+                border-top: 1px solid var(--gray-light);
             }
             
             .nav-links.active {
@@ -619,7 +741,7 @@
         <div class="container header-container">
             <a href="#" class="logo">
                 <i class="fas fa-cut logo-icon"></i>
-                <span>CapCut Tutorial</span>
+                <span>KifVid</span>
             </a>
             
             <div class="mobile-toggle" id="mobileToggle">
@@ -635,30 +757,33 @@
             </ul>
         </div>
     </header>
-
-    <!-- Hero Section -->
     <section class="hero" id="home">
         <div class="container hero-container">
             <div class="hero-content">
-                <h1>Pelajari <span>CapCut</span> dengan Panduan Lengkap</h1>
+                <h1>Master <span>KifVid</span> dengan Panduan Visual</h1>
                 <p>Tingkatkan skill editing video Anda dengan tutorial step-by-step dari dasar hingga mahir. Pelajari teknik editing terbaru, efek khusus, dan tips profesional untuk membuat konten menarik.</p>
                 <div class="hero-btns">
                     <a href="#tutorials" class="btn">Mulai Belajar</a>
-                    <a href="#download" class="btn btn-secondary">Download CapCut</a>
+                    <a href="#download" class="btn btn-secondary">Download KifVid</a>
                 </div>
             </div>
             <div class="hero-image">
-                <img src="https://images.unsplash.com/photo-1611224923853-80b023f02d71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="CapCut Interface" class="mockup">
+                <div class="mockup">
+                    <div style="width:100%;height:300px;background:linear-gradient(135deg, #111111, #222222);display:flex;align-items:center;justify-content:center;color:var(--primary);font-size:24px;">
+                        <div style="text-align:center;">
+                            <i class="fas fa-play-circle" style="font-size:48px;margin-bottom:10px;"></i>
+                            <div>Interface KifVid</div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
-
-    <!-- Features Section -->
     <section class="features" id="features">
         <div class="container">
             <div class="section-title">
-                <h2>Fitur Unggulan CapCut</h2>
-                <p>Jelajahi berbagai fitur canggih yang membuat CapCut menjadi editor video pilihan para kreator konten.</p>
+                <h2>Fitur <span>Unggulan</span> KifVid</h2>
+                <p>Jelajahi berbagai fitur canggih yang membuat KifVid menjadi editor video pilihan para kreator konten.</p>
             </div>
             
             <div class="features-grid">
@@ -717,7 +842,7 @@
     <section class="tutorials" id="tutorials">
         <div class="container">
             <div class="section-title">
-                <h2>Tutorial CapCut</h2>
+                <h2>Tutorial <span>KifVid</span></h2>
                 <p>Pilih kategori tutorial berdasarkan level keahlian dan topik yang ingin Anda pelajari.</p>
             </div>
             
@@ -730,22 +855,21 @@
             </div>
             
             <div class="tutorials-grid" id="tutorialsGrid">
-                <!-- Tutorial items will be loaded by JavaScript -->
             </div>
         </div>
     </section>
 
-    <!-- Download Section -->
+
     <section class="download" id="download">
         <div class="container">
-            <h2>Download CapCut Sekarang</h2>
+            <h2>Download <span>KifVid</span> Sekarang</h2>
             <p>Gratis, lengkap, dan mudah digunakan. CapCut tersedia untuk berbagai perangkat dan platform.</p>
             
             <div class="download-btns">
                 <a href="#" class="download-btn">
                     <i class="fab fa-apple"></i>
                     <div>
-                        <div style="font-size: 12px;">Download di</div>
+                        <div style="font-size: 12px; color: var(--gray);">Download di</div>
                         <div>App Store</div>
                     </div>
                 </a>
@@ -753,7 +877,7 @@
                 <a href="#" class="download-btn">
                     <i class="fab fa-google-play"></i>
                     <div>
-                        <div style="font-size: 12px;">Download di</div>
+                        <div style="font-size: 12px; color: var(--gray);">Download di</div>
                         <div>Google Play</div>
                     </div>
                 </a>
@@ -761,7 +885,7 @@
                 <a href="#" class="download-btn">
                     <i class="fas fa-desktop"></i>
                     <div>
-                        <div style="font-size: 12px;">Download untuk</div>
+                        <div style="font-size: 12px; color: var(--gray);">Download untuk</div>
                         <div>Windows/Mac</div>
                     </div>
                 </a>
@@ -774,8 +898,8 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-col">
-                    <h3>CapCut Tutorial</h3>
-                    <p>Situs tutorial resmi untuk mempelajari editor video CapCut. Panduan lengkap dari dasar hingga mahir.</p>
+                    <h3>KifVid</h3>
+                    <p style="color: var(--gray);">Situs tutorial resmi untuk mempelajari editor video KifVid. Panduan lengkap dari dasar hingga mahir.</p>
                     <div class="social-links">
                         <a href="#"><i class="fab fa-youtube"></i></a>
                         <a href="#"><i class="fab fa-instagram"></i></a>
@@ -809,7 +933,7 @@
                 <div class="footer-col">
                     <h3>Kontak</h3>
                     <ul class="footer-links">
-                        <li><a href="mailto:support@capcuttutorial.id">support@capcuttutorial.id</a></li>
+                        <li><a href="mailto:support@capcuttutorial.id">support@KifVidtutorial.id</a></li>
                         <li><a href="#">FAQ</a></li>
                         <li><a href="#">Bantuan</a></li>
                         <li><a href="#">Kebijakan Privasi</a></li>
@@ -819,7 +943,7 @@
             </div>
             
             <div class="copyright">
-                <p>&copy; 2023 CapCut Tutorial. Semua hak dilindungi. CapCut adalah merek dagang dari ByteDance.</p>
+                <p>&copy; 2023 KifVid. Semua hak dilindungi. CapCut adalah merek dagang dari ByteDance.</p>
             </div>
         </div>
     </footer>
@@ -848,7 +972,7 @@
         const tutorialData = [
             {
                 id: 1,
-                title: "Panduan Dasar CapCut untuk Pemula",
+                title: "Panduan Dasar KifVid untuk Pemula",
                 description: "Pelajari dasar-dasar editing video di CapCut dari nol. Mulai dari mengimpor video hingga mengekspor hasil akhir.",
                 category: "beginner",
                 duration: "15 min",
@@ -923,7 +1047,6 @@
         const tutorialGrid = document.getElementById('tutorialsGrid');
         const filterBtns = document.querySelectorAll('.filter-btn');
         
-        // Function to render tutorials
         function renderTutorials(filter = 'all') {
             tutorialGrid.innerHTML = '';
             
@@ -936,12 +1059,8 @@
                 tutorialCard.className = 'tutorial-card';
                 tutorialCard.setAttribute('data-category', tutorial.category);
                 
-                // Generate random color for tutorial image
-                const colors = ['#00c3ff', '#ff2e63', '#6c5ce7', '#00b894', '#fdcb6e'];
-                const randomColor = colors[Math.floor(Math.random() * colors.length)];
-                
                 tutorialCard.innerHTML = `
-                    <div class="tutorial-img" style="background-color: ${randomColor};">
+                    <div class="tutorial-img">
                         <i class="${tutorial.icon}"></i>
                     </div>
                     <div class="tutorial-content">
@@ -959,27 +1078,27 @@
             });
         }
         
-        // Initial render
+        
         renderTutorials();
         
-        // Filter functionality
+       
         filterBtns.forEach(btn => {
             btn.addEventListener('click', () => {
-                // Remove active class from all buttons
+                
                 filterBtns.forEach(button => button.classList.remove('active'));
                 
-                // Add active class to clicked button
+                
                 btn.classList.add('active');
                 
-                // Get filter value
+                
                 const filter = btn.getAttribute('data-filter');
                 
-                // Render filtered tutorials
+                
                 renderTutorials(filter);
             });
         });
         
-        // Smooth scrolling for anchor links
+        
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
@@ -997,13 +1116,15 @@
             });
         });
         
-        // Header scroll effect
+        
         window.addEventListener('scroll', () => {
             const header = document.querySelector('header');
             if (window.scrollY > 100) {
-                header.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.1)';
+                header.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.9)';
+                header.style.backgroundColor = 'rgba(0, 0, 0, 0.98)';
             } else {
-                header.style.boxShadow = '0 2px 15px rgba(0, 0, 0, 0.05)';
+                header.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.7)';
+                header.style.backgroundColor = 'rgba(0, 0, 0, 0.95)';
             }
         });
     </script>
